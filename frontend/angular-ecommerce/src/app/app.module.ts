@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Route, RouterModule } from '@angular/router';
 
-const routes: Route = [
+const routes: Route[] = [
   { path: 'category/:id', component: ProductsListComponent },
   { path: 'category/', component: ProductsListComponent },
   { path: 'products', component: ProductsListComponent },
