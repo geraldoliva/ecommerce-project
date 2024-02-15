@@ -13,6 +13,7 @@ import { Route, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Route[] = [
   { path: 'products/:id', component: ProductDetailsComponent },
@@ -37,6 +38,7 @@ const routes: Route[] = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [ProductService, provideClientHydration()],
   bootstrap: [AppComponent],
