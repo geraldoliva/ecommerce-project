@@ -85,7 +85,19 @@ export class CheckoutComponent implements OnInit {
   onSubmit() {
     console.log('handling the submit button');
     console.log(this.checkoutFormGroup.get('customer')!.value);
-    console.log(this.checkoutFormGroup.get('customer')!.value.email);
+    console.log(
+      'The email address is ' +
+        this.checkoutFormGroup.get('customer')!.value.email
+    );
+
+    console.log(
+      'The shipping address country is ' +
+        this.checkoutFormGroup.get('shippingAddress')!.value.country.name
+    );
+    console.log(
+      'The shipping address state is ' +
+        this.checkoutFormGroup.get('shippingAddress')!.value.state.name
+    );
   }
 
   copyShippingAddressToBillingAddress(event: Event) {
@@ -93,8 +105,14 @@ export class CheckoutComponent implements OnInit {
       this.checkoutFormGroup.controls['billingAddress'].setValue(
         this.checkoutFormGroup.controls['shippingAddress'].value
       );
+
+      // bug fix for states
+      this.billingAddressStates = this.shippingAddressStates;
     } else {
       this.checkoutFormGroup.controls['billingAddress'].reset();
+
+      // bug fix for states
+      this.billingAddressStates = [];
     }
   }
 
@@ -128,20 +146,18 @@ export class CheckoutComponent implements OnInit {
     const countryCode = formGroup?.value.country.code;
     const countryName = formGroup?.value.country.name;
 
-    console.log(`Wwwwwwwwwwwwwwwwww{formGroupName} country code: ${countryCode}`);
-    console.log(`{formGroupName} country name: ${countryName}`);
+    console.log(`${formGroupName} country code: ${countryCode}`);
+    console.log(`${formGroupName} country name: ${countryName}`);
 
-    this.luv2ShopFormService.getStates(
-      countryCode.subscribe((data: State[]) => {
-        if (formGroupName === 'shippingAddress') {
-          this.shippingAddressStates = data;
-        } else {
-          this.billingAddressStates = data;
-        }
+    this.luv2ShopFormService.getStates(countryCode).subscribe((data) => {
+      if (formGroupName === 'shippingAddress') {
+        this.shippingAddressStates = data;
+      } else {
+        this.billingAddressStates = data;
+      }
 
-        // select first item by default
-        formGroup?.get('state')?.setValue(data[0]);
-      })
-    );
+      // select first item by default
+      formGroup?.get('state')?.setValue(data[0]);
+    });
   }
 }
