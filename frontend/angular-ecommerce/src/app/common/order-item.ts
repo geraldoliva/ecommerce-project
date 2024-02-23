@@ -8,8 +8,8 @@ export class OrderItem {
 
   constructor(cartItem: CartItem) {
     this.imageUrl = cartItem.imageUrl;
-    this.unitPrice = cartItem.quantity;
-    this.quantity = cartItem.unitPrice;
+    this.unitPrice = cartItem.unitPrice;
+    this.quantity = cartItem.quantity;
     this.productId = cartItem.id;
   }
 }
