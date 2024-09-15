@@ -554,7 +554,16 @@ input.au-input.au-input-xl {
   margin-left: 5px;
 }
 .product-box {
-  margin-bottom: 60px;
+  margin-bottom: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+
+  padding: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .price {
   margin: 15px 0 0;
@@ -568,6 +577,11 @@ input.au-input.au-input-xl {
   font-weight: 600;
   padding-top: 12px;
   margin-bottom: 7px;
+  width: 15ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 .product-box h2 {
   font-size: 15px;
@@ -688,6 +702,8 @@ option:first {
 }
 select {
   color: #828482;
+  padding: 2px;
+  outline: none;
 }
 
 /* 
@@ -802,6 +818,31 @@ footer ul li {
   font-size: 14px;
   padding: 10px 20px;
 }
+
+/* 
+ * ----------------------------
+ * Extras
+ * ----------------------------
+ */
+
+.footer-pagination .row {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;  
+  /* align-items: center;   */
+}
+
+.ngb-pagination {
+  display: flex;
+  /* align-items: center; */
+  justify-content:end;
+  align-self: flex-end;
+}
+
+ngb-pagination {
+  margin: 0;
+}
+
 
 /* 
  * ----------------------------
@@ -993,7 +1034,7 @@ footer ul li {
     margin-left: 15px;
   }
   .footer-pagination {
-    text-align: center;
+    /* text-align: center; */
   }
   .product-box {
     text-align: centerg;

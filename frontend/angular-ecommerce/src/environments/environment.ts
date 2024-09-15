@@ -1,3 +1,3 @@
 export const environment = {
-  url: 'http://localhost:8080',
+  url: 'https://spring-boot-ecommerce-4b780fef9913.herokuapp.com',
 };
